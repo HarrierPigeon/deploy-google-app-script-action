@@ -42,9 +42,9 @@ function checkForAndAddCommit() {
   let baseData = sheet.getDataRange().getValues();
   Logger.log(baseData);
 
-  let headers = baseData.shift();
+  let header = baseData.shift();
 
-  let objArray = splitDataIntoArrayOfObjs(baseData, headers);
+  let objArray = splitDataIntoArrayOfObjs(baseData, header);
 
   let commits = [];
   for (let entry of objArray) {
