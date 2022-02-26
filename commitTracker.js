@@ -80,7 +80,7 @@ function sendDataToDisplayV3_commitTracker_(header, finalData, sheet) {
     Logger.log("Data added, sorting");
     sheet
       .getRange(2, 1, finalData.length, header.length)
-      .sort([{ column: 1, ascending: true }]);
+
     // Logger.log("data added")
   }
 }
