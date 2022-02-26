@@ -57,5 +57,30 @@ function checkForAndAddCommit() {
     objArray.push(GITHUB_DATA);
   }
 
-  Logger.log(turnArrayOfObjsIntoData(objArray));
+    let finalData = turnArrayOfObjsIntoData(objArray)
+    sendDataToDisplayV3_commitTracker_(header, finalData, sheet)
+}
+
+function sendDataToDisplayV3_commitTracker_(header, finalData, sheet) {
+  // responsible for actually displaying the data.  Clears first to get rid of anything that might be left over.
+  sheet.clearContents();
+  sheet.appendRow(header);
+  Logger.log(finalData.length);
+  Logger.log("adding Header");
+  Logger.log(header);
+  sheet.getRange(1, 1, 1, header.length).setValues([header]);
+  Logger.log("added header, adding data");
+  if (finalData.length == 0 || typeof finalData == null) {
+    Logger.log("no data, skipping");
+    return;
+  } else {
+    sheet
+      .getRange(2, 1, finalData.length, finalData[0].length)
+      .setValues(finalData);
+    Logger.log("Data added, sorting");
+    sheet
+      .getRange(2, 1, finalData.length, header.length)
+      .sort([{ column: 1, ascending: true }]);
+    // Logger.log("data added")
+  }
 }
