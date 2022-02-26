@@ -7,4 +7,4 @@ const GITHUB_DATA = {
     
     github_repository: "GITHUBREPOSITORY", // done
     github_branch_ref: "REFNAME" // done
-};
+}
