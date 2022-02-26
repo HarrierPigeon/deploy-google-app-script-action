@@ -5,6 +5,9 @@
 This repository is an example of how to setup an automatic [CI/CD](https://en.wikipedia.org/wiki/CI/CD) process for [Google Apps Script](https://developers.google.com/apps-script) using [GitHub Actions](https://docs.github.com/en/actions).
 
 *forked from [https://github.com/ericanastas/deploy-google-app-script-action](ericanastas/deploy-google-app-script-action)*
+ - major changes:
+   - saves extra [GitHub action context data](https://docs.github.com/en/actions/learn-github-actions/contexts#github-context) data in a object stored in ``git-info.js``
+   - adds the ability to have a document container by setting ``PARENT_ID`` in actions secrets.
 
 ## Why?
 
