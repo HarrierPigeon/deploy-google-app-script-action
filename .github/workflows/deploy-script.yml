@@ -72,9 +72,9 @@ jobs:
         id: modify-git-info
         run: >
           sed -ibak -e "s/COMMITSHA/$COMMIT_SHA/
-          s/JOBID/$GITHUB_JOB
-          s/REFNAME/$GITHUB_REF_NAME
-          s/COMMITACTOR/$COMMIT_ACTOR
+          s/JOBID/$GITHUB_JOB/
+          s/REFNAME/$GITHUB_REF_NAME/
+          s/COMMITACTOR/$COMMIT_ACTOR/
           s/EVENTNAME/$EVENT_NAME/" git-info.js
 
         # sed -i "s/COMMITACTOR/$COMMIT_ACTOR" git-info.js
