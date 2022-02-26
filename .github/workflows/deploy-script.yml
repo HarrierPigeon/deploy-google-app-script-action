@@ -72,8 +72,8 @@ jobs:
         id: modify-git-info
         run: >
           sed -i "s\COMMITSHA\$COMMIT_SHA\;s\EVENTNAME\$EVENT_NAME\" git-info.js
-          sed -i "s\COMMITAUTHOR\$COMMIT_ACTOR;s\JOBID\$GITHUB_JOB" git-info.js
-          sed -i "s\GITHUBREPOSITORY\$GITHUB_REPOSITORY;s\REFNAME\$GITHUB_REF_NAME" git-info.js
+        # sed -i "s\COMMITAUTHOR\$COMMIT_ACTOR;s\JOBID\$GITHUB_JOB" git-info.js
+        # sed -i "s\GITHUBREPOSITORY\$GITHUB_REPOSITORY;s\REFNAME\$GITHUB_REF_NAME" git-info.js
 
         # sed -i "s/COMMITSHA/$COMMIT_SHA/;s/EVENTNAME/$EVENT_NAME/" git-info.js
         # sed -i "s/COMMITAUTHOR/$COMMIT_ACTOR;s/JOBID/$GITHUB_JOB" git-info.js
