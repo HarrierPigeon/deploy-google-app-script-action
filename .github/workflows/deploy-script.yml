@@ -71,15 +71,18 @@ jobs:
       - name: update git-info.js
         id: modify-git-info
         run: >
-          sed -ibak -e "s/COMMITSHA/$COMMIT_SHA/;
-          s/REFNAME/$GITHUB_REF_NAME/;
-          s/COMMITACTOR/$COMMIT_ACTOR/;
-          s/JOBID/$GITHUB_JOB/" git-info.js
+          sed -ibak -e "s/COMMITSHA/$COMMIT_SHA/g;
+          s/REFNAME/$GITHUB_REF_NAME/g;
+          s/COMMITACTOR/$COMMIT_ACTOR/g;
+          s/EVENTNAME/$EVENT_NAME/g;
+          s/JOBID/$GITHUB_JOB/g;
+          s|GITHUBREPOSITORY|$GITHUB_REPOSITORY|g" git-info.js
         #
         #  g
-        #  s/EVENTNAME/$EVENT_NAME/g" git-info.js
+        #  s/EVENTNAME/$EVENT_NAME/g" git-info.js 
 
         # sed -i "s/COMMITACTOR/$COMMIT_ACTOR" git-info.js
+
         # sed -i "s/JOBID/$GITHUB_JOB" git-info.js
         # sed -i "s/REFNAME/$GITHUB_REF_NAME" git-info.js
         # sed -i "s|GITHUBREPOSITORY|$GITHUB_REPOSITORY" git-info.js
