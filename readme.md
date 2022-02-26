@@ -72,6 +72,10 @@ A GitHub personal access token must be provided to the workfow to allow it to up
 
 The clasp command line tool identifies the Google Apps Script project to push and deploy too using the `scriptId` property in `.clasp.json`. You may leave this value hard coded in `.clasp.json` or you may have this set dynamically. To specify the target script dynamically add a `SCRIPT_ID` secret to the repository. This will cause the workflow to override whatever literal scriptId value is in `.clasp.json`
 
+#### `PARENT_ID` [OPTIONAL]
+
+This is for projects that have a container document, such as a spreadsheet. Similar to `SCRIPT_ID`, You can leave this value hard coded in `.clasp.json` or you may have this set dynamically. To specify the target script dynamically add a `PARENT_ID` secret to the repository. This will cause the workflow to override whatever the literal ``parentId`` value is in `.clasp.json`
+
 #### `DEPLOYMENT_ID` [OPTIONAL]
 
 The workflow can automatically deploy the script when the `main` branch is pushed to github.
