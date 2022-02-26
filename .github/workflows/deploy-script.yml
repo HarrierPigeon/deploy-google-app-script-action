@@ -71,7 +71,7 @@ jobs:
       - name: update git-info.js
         id: modify-git-info
         run: >
-          sed -i "s/COMMITSHA/$COMMIT_SHA/
+          sed -ibak -e "s/COMMITSHA/$COMMIT_SHA/
           s/JOBID/$GITHUB_JOB
           s/REFNAME/$GITHUB_REF_NAME
           s/COMMITACTOR/$COMMIT_ACTOR
