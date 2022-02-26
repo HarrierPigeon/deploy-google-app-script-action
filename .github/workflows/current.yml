@@ -54,15 +54,15 @@ jobs:
         if: ${{github.event_name	!= 'schedule' }}
         uses: actions/checkout@v2
 
-      # TO UPDATE- MODIFY SCRIPTID & PARENTID TO POINT TO NEW SECRETS
-      # read the guide at docs/ci-setup.md!
-      - name: modify .clasp.json
-        id: modify-clasp
-        run: sed -i "s/SCRIPT_ID/$SCRIPTID/;s/PARENT_ID/$PARENTID/" .clasp.json
-        env:
-          SCRIPTID: ${{ secrets.RELEASE_SCRIPT_ID }}
-          PARENTID: ${{ secrets.RELEASE_PARENT_ID }}
-          # 🐧
+      # # TO UPDATE- MODIFY SCRIPTID & PARENTID TO POINT TO NEW SECRETS
+      # # read the guide at docs/ci-setup.md!
+      # - name: modify .clasp.json
+      #   id: modify-clasp
+      #   run: sed -i "s/SCRIPT_ID/$SCRIPTID/;s/PARENT_ID/$PARENTID/" .clasp.json
+      #   env:
+      #     SCRIPTID: ${{ secrets.RELEASE_SCRIPT_ID }}
+      #     PARENTID: ${{ secrets.RELEASE_PARENT_ID }}
+      #     # 🐧
 
         
 
@@ -72,6 +72,15 @@ jobs:
         run: jq '.scriptId = "${{env.SCRIPT_ID}}"' .clasp.json > /tmp/.clasp.json && mv /tmp/.clasp.json .clasp.json
         env:
           SCRIPT_ID: ${{secrets.SCRIPT_ID}}
+
+      - name: Set parentId in .clasp.json file
+        id: set-parent-id
+        if: ${{ github.event_name	!= 'schedule' && env.SCRIPT_ID}}
+        run: jq '.parentId = "[${{env.PARENT_ID}}]"' .clasp.json > /tmp/.clasp.json && mv /tmp/.clasp.json .clasp.json
+        env:
+          PARENT_ID: ${{secrets.PARENT_ID}}
+
+    # Somewhere in here: push in github commit number and information to a stubby information js file
 
       - name: Push script to scripts.google.com
         id: clasp-push
