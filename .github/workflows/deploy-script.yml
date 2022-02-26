@@ -68,16 +68,16 @@ jobs:
     # Somewhere in here: push in github commit number and information to a stubby information js file
 
       # read the guide at docs/ci-setup.md!
-      # - name: update git-info.js
-      #   id: modify-git-info
-      #   run: sed -i "s/COMMITSHA/$COMMIT_SHA/;s/EVENTNAME/$EVENT_NAME/" .clasp.json
-      #   env:
-      #     COMMIT_SHA: ${{ github.sha }}
-      #     EVENT_NAME: ${{ github.event_name }}
-      #     GITHUB_JOB: ${{ github.job }}
-      #     GITHUB_REPOSITORY: ${{ github.repository }} 
-      # # #     GITHUB_ACTOR: ${{github.actor	}}
-# run: sed -i "s/COMMITSHA/$COMMIT_SHA/;s/EVENTNAME/$EVENT_NAME/;s/JOBID/$GITHUB_JOB/;s/GITHUBREPOSITORY/$GITHUB_REPOSITORY/;s/GITHUBACTOR/$GITHUB_ACTOR/" .clasp.json
+      - name: update git-info.js
+        id: modify-git-info
+        run: sed -i "s/COMMITSHA/$COMMIT_SHA/; s/EVENTNAME/$EVENT_NAME/; s/JOBID/$GITHUB_JOB/; s/GITHUBREPOSITORY/$GITHUB_REPOSITORY/; s/GITHUBACTOR/$GITHUB_ACTOR/" .clasp.json
+        # run: sed -i "s/COMMITSHA/$COMMIT_SHA/;s/EVENTNAME/$EVENT_NAME/" .clasp.json
+        env:
+          COMMIT_SHA: ${{ github.sha }}
+          EVENT_NAME: ${{ github.event_name }}
+          GITHUB_JOB: ${{ github.job }}
+          GITHUB_REPOSITORY: ${{ github.repository }} 
+          GITHUB_ACTOR: ${{github.actor	}}
         
           # 🐧
 
