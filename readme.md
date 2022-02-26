@@ -3,6 +3,11 @@
 [![Deploy Script](https://github.com/HarrierPigeon/deploy-google-app-script-action/actions/workflows/deploy-script.yml/badge.svg?branch=main)](https://github.com/HarrierPigeon/deploy-google-app-script-action/actions/workflows/deploy-script.yml)
 
 This repository is an example of how to setup an automatic [CI/CD](https://en.wikipedia.org/wiki/CI/CD) process for [Google Apps Script](https://developers.google.com/apps-script) using [GitHub Actions](https://docs.github.com/en/actions).
+
+## Why?
+
+This is useful if you want to work from a nicer editor than the built-in Google one (ie vsCode) and use GitHub for version control & etc.  There's probably a better thing to use for standalone GAS scripts or stuff that uses features of GCP, but if you don't have access to GCP because your organization locked down your gSuite access a little too much, this is a nice alternative.
+
 ## Setup
 
 ### Setup Project Files
