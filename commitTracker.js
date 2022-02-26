@@ -6,7 +6,7 @@ class dataEntry {
   }
 }
 
-function splitDataIntoArrayOfObjs(dataArray, header) {
+function splitDataIntoArrayOfObjs_(dataArray, header) {
   let outData = [];
   for (let entry of dataArray) {
     Logger.log(entry);
@@ -16,7 +16,7 @@ function splitDataIntoArrayOfObjs(dataArray, header) {
   return outData;
 }
 
-function turnArrayOfObjsIntoData(objArray) {
+function turnArrayOfObjsIntoData_(objArray) {
   let keys = [];
   for (let key in objArray[0]) {
     Logger.log(key);
@@ -44,7 +44,7 @@ function checkForAndAddCommit() {
 
   let header = baseData.shift();
 
-  let objArray = splitDataIntoArrayOfObjs(baseData, header);
+  let objArray = splitDataIntoArrayOfObjs_(baseData, header);
 
   let commits = [];
   for (let entry of objArray) {
@@ -57,7 +57,7 @@ function checkForAndAddCommit() {
     objArray.push(GITHUB_DATA);
   }
 
-    let finalData = turnArrayOfObjsIntoData(objArray)
+    let finalData = turnArrayOfObjsIntoData_(objArray)
     sendDataToDisplayV3_commitTracker_(header, finalData, sheet)
 }
 
@@ -74,12 +74,9 @@ function sendDataToDisplayV3_commitTracker_(header, finalData, sheet) {
     Logger.log("no data, skipping");
     return;
   } else {
-    sheet
-      .getRange(2, 1, finalData.length, finalData[0].length)
-      .setValues(finalData);
-    Logger.log("Data added, sorting");
-    sheet
-      .getRange(2, 1, finalData.length, header.length)
+    sheet.getRange(2, 1, finalData.length, finalData[0].length).setValues(finalData);
+    // Logger.log("Data added, sorting");
+    // sheet.getRange(2, 1, finalData.length, header.length)
 
     // Logger.log("data added")
   }
