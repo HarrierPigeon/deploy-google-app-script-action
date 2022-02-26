@@ -54,7 +54,7 @@ function checkForAndAddCommit() {
   if (commits.includes(GITHUB_DATA.commit_sha)) {
     Logger.log("Commit already there");
   } else {
-    objArray.push(GITHUB_DATA);
+    objArray.unshift(GITHUB_DATA);
   }
 
     let finalData = turnArrayOfObjsIntoData_(objArray)
