@@ -3,7 +3,7 @@ name: Deploy Script
 on:
   workflow_dispatch:
   push:
-    branches: [merge-in-modifications]
+    branches: [main]
   release:
     types: [published]
   schedule:
