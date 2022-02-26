@@ -3,7 +3,7 @@ name: Deploy Script
 on:
   workflow_dispatch:
   push:
-    branches: [test]
+    branches: [merge-in-modifications]
   release:
     types: [published]
   schedule:
@@ -57,6 +57,30 @@ jobs:
         run: jq '.scriptId = "${{env.SCRIPT_ID}}"' .clasp.json > /tmp/.clasp.json && mv /tmp/.clasp.json .clasp.json
         env:
           SCRIPT_ID: ${{secrets.SCRIPT_ID}}
+
+      - name: Set parentId in .clasp.json file
+        id: set-parent-id
+        if: ${{ github.event_name	!= 'schedule' && env.PARENT_ID}}
+        run: jq '.parentId = "[${{env.PARENT_ID}}]"' .clasp.json > /tmp/.clasp.json && mv /tmp/.clasp.json .clasp.json
+        env:
+          PARENT_ID: ${{secrets.PARENT_ID}}
+
+    # Somewhere in here: push in github commit number and information to a stubby information js file
+
+      # read the guide at docs/ci-setup.md!
+      - name: update git-info.js
+        id: modify-git-info
+        run: sed -i "s/COMMITSHA/$COMMIT_SHA/;s/EVENTNAME/$EVENT_NAME/;s/JOBID/$GITHUB_JOB/;s/GITHUBREPOSITORY/$GITHUB_REPOSITORY/;s/GITHUBACTOR/$GITHUB_ACTOR/" .clasp.json
+        env:
+          COMMIT_SHA: ${{ github.sha }}
+          EVENT_NAME: ${{ github.event_name }}
+          GITHUB_JOB: ${{ github.job }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_ACTOR: ${{github.actor	}}
+
+          # 🐧
+
+
 
       - name: Push script to scripts.google.com
         id: clasp-push

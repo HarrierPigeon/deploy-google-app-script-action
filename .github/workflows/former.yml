@@ -1,10 +1,10 @@
-name: Live Release
+name: Former Version
 
 on:
   workflow_dispatch:
   push:
     # CHANGE THIS TO REFERENCE THE BRANCH YOU WANT TO PUSH
-    branches: [merge-in-modifications]
+    branches: []
   release:
     types: [published]
   # DO NOT TOUCH: this updates the authorization 
