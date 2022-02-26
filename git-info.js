@@ -1,9 +1,10 @@
 const GITHUB_DATA = {
     commit_sha:"COMMITSHA",
-    commit_author:"COMMITAUTHOR",
-    action_event_name:"EVENTNAME",
+    action_event_name: "EVENTNAME",
     
+    github_actor:"COMMITACTOR",
     job_id:"JOBID",
-    github_repository:"GITHUBREPOSITORY",
-    github_actor:"GITHUBACTOR"
+    
+    github_repository: "GITHUBREPOSITORY",
+    github_branch_ref: "REFNAME"
 }
