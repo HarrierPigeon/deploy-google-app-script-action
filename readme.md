@@ -8,6 +8,10 @@ This repository is an example of how to setup an automatic [CI/CD](https://en.wi
  - major changes:
    - saves extra [GitHub action context data](https://docs.github.com/en/actions/learn-github-actions/contexts#github-context) data in a object stored in ``git-info.js``
    - adds the ability to have a document container by setting ``PARENT_ID`` in actions secrets.
+   - ``commitTracker.js`` will automatically log whenever the script in GAS gets updated if you set up a recurring trigger for it.
+    - at present, this requires a parent container.
+
+[Demo Google Sheet](https://docs.google.com/spreadsheets/d/1tli_An8Jg5-UQltOtRla7pz-mPRAYDfhExRkkVA2oJE/edit?usp=sharing)
 
 ## Why?
 
